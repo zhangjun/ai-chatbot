@@ -8,7 +8,7 @@ import {
   streamUI,
   createStreamableValue
 } from 'ai/rsc'
-import { openai } from '@ai-sdk/openai'
+import { openai, createOpenAI, OpenAIProviderSettings } from '@ai-sdk/openai'
 
 import {
   spinner,
@@ -126,8 +126,12 @@ async function submitUserMessage(content: string) {
   let textStream: undefined | ReturnType<typeof createStreamableValue<string>>
   let textNode: undefined | React.ReactNode
 
+  const openai_url = process.env["OPENAI_BASE_URL"]
+  console.log(openai_url)
+
   const result = await streamUI({
-    model: openai('gpt-3.5-turbo'),
+    // model: openai('gpt-3.5-turbo'),
+    model: openai('llama3_as_12b_cache_t'),
     initial: <SpinnerMessage />,
     system: `\
     You are a stock trading conversation bot and you can help users buy stocks, step by step.
@@ -477,7 +481,7 @@ async function submitUserMessage(content: string) {
       }
     }
   })
-
+  console.log("finish request.")
   return {
     id: nanoid(),
     display: result.value
