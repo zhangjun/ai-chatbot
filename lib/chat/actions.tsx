@@ -9,6 +9,7 @@ import {
   createStreamableValue
 } from 'ai/rsc'
 import { openai, createOpenAI, OpenAIProviderSettings } from '@ai-sdk/openai'
+import { custom_openai } from '@/lib/apicall'
 
 import {
   spinner,
@@ -131,7 +132,7 @@ async function submitUserMessage(content: string) {
 
   const result = await streamUI({
     // model: openai('gpt-3.5-turbo'),
-    model: openai('llama3_as_12b_cache_t'),
+    model: custom_openai('llama3_as_12b_cache_t'),
     initial: <SpinnerMessage />,
     system: `\
     You are a stock trading conversation bot and you can help users buy stocks, step by step.
