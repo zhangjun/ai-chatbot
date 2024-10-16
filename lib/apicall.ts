@@ -1,5 +1,7 @@
 import { openai, createOpenAI, OpenAIProviderSettings } from '@ai-sdk/openai'
 
+// ratelimit
+// https://github.com/vercel/next.js/tree/canary/examples/api-routes-rate-limit
 // https://github.com/vercel/ai/blob/main/examples/ai-core/src/stream-text/perplexity.ts
 var custom_openai = createOpenAI({
   compatibility: "strict",

@@ -127,8 +127,8 @@ async function submitUserMessage(content: string) {
   let textStream: undefined | ReturnType<typeof createStreamableValue<string>>
   let textNode: undefined | React.ReactNode
 
-  const openai_url = process.env["OPENAI_BASE_URL"]
-  console.log(openai_url)
+  // const openai_url = process.env["OPENAI_BASE_URL"]
+  // console.log(openai_url)
 
   const result = await streamUI({
     // model: openai('gpt-3.5-turbo'),
