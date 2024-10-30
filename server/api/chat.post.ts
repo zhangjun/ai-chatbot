@@ -29,8 +29,6 @@ export default defineEventHandler(async (event) => {
       ...config,
     });
 
-    console.log(result)
-
     return params.stream
       ? sendStream(event, result as ReadableStream)
       : (
