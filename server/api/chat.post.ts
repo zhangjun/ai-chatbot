@@ -1,3 +1,5 @@
+import { hubAI } from '~~/lib/chat';
+
 export default defineEventHandler(async (event) => {
   const { messages, params } = await readBody(event);
   if (!messages || messages.length === 0 || !params) {
@@ -26,6 +28,8 @@ export default defineEventHandler(async (event) => {
         : messages,
       ...config,
     });
+
+    console.log(result)
 
     return params.stream
       ? sendStream(event, result as ReadableStream)
